@@ -104,6 +104,7 @@ mkdir -p tests/{unit,integration}
 4. Füge in der Datei `.husky/pre-commit` folgenden Befehl hinzu:
    ```bash
    npm lint-staged
+   npm run test
    ```
 
 ## Fertig!
