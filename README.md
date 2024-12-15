@@ -38,7 +38,7 @@ Diese Anleitung führt dich Schritt für Schritt durch das Setup eines Fullstack
    Ergänze in der `package.json` im Root-Verzeichnis im `scripts`-Abschnitt:
    ```json
    "scripts": {
-     "test": "vitest"
+     "test": "vitest run"
    }
    ```
 
