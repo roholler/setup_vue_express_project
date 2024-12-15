@@ -1,82 +1,88 @@
-# setup_vue_express_project
-This repository shows how to set up a template fullstack-project using vuejs and express.
+# Fullstack-Projekt Setup (Vue & Express)
 
-# Projekt-Setup für ein Fullstack-Projekt mit Vue (Client) und Express (Server)
-
-Diese Anleitung beschreibt die initiale Einrichtung eines Fullstack-Projekts bestehend aus einem Vue-Frontend und einem Express-Backend.  
+Diese Anleitung führt dich Schritt für Schritt durch das Setup eines Fullstack-Projektes mit einer Vue-Frontend-Applikation (Client) und einem Express-Backend (Server). Die Schritte gehen davon aus, dass du bereits ein Git-Repository angelegt hast.
 
 ## Voraussetzungen
 
-- Node.js (inkl. npm) ist installiert
-- Git-Repository ist initialisiert
+- Node.js und npm sind installiert.
+- Ein bereits existierendes, initialisiertes Git-Repository liegt vor.
 
 ## Schritte
 
-### 1. Grundkonfiguration im Projekt-Root
+### 1. Projektinitialisierung im Root-Verzeichnis
 
-1. Erstelle eine `package.json` im Projekt-Root:
+1. Initialisiere ein neues npm-Projekt:  
    ```bash
    npm init -y
    ```
-2. Erstelle jeweils eine `package.json` für Client und Server (Workspaces):
+
+2. Lege zwei Arbeitsbereiche (Workspaces) für `client` und `server` an:  
    ```bash
    npm init -y -w client -w server
    ```
-3. Richte ESLint im Root-Verzeichnis ein:
+
+3. Richte ESLint ein:  
    ```bash
    npm init @eslint/config@latest
    ```
-4. Erstelle das Vue-Frontend im Client-Verzeichnis:
+
+4. Installiere und initialisiere Vuetify (im client-Verzeichnis, wenn abgefragt Projektname `client` angeben):  
    ```bash
-   npm create vue@latest client
+   npm init vuetify@latest
    ```
-5. Lege eine `.env`-Datei im Root-Verzeichnis an:
+
+5. Installiere Vitest (zum Testen):  
+   ```bash
+   npm install -D vitest
+   ```
+   Ergänze in der `package.json` im Root-Verzeichnis im `scripts`-Abschnitt:
+   ```json
+   "scripts": {
+     "test": "vitest"
+   }
+   ```
+
+6. Lege eine `.env`-Datei an:  
    ```bash
    touch .env
    ```
-6. Lege eine `.gitignore`-Datei im Root-Verzeichnis an:
-   ```bash
-   touch .gitignore
-   ```
-7. Füge den .env Pfad in die `.gitignore`-Datei ein:
-   ```bash
-   .env
-   ```
 
-### 2. Client-Struktur anlegen
+### 2. Client-Struktur erstellen
 
-1. Erstelle die benötigten Ordner für den Client:
+Wechsle in den `client`-Ordner und lege die benötigten Verzeichnisse an:
+
+```bash
+mkdir -p src/{assets,components,layouts,pages,plugins,router,services,stores,styles,types,utils}
+mkdir -p tests/{unit,integration}
+```
+
+### 3. Server-Struktur erstellen
+
+1. Installiere die benötigten Abhängigkeiten:  
    ```bash
-   mkdir -p client/src/{assets,components,composables,services,stores,types,utils,views}
-   mkdir -p client/tests/{unit,integration}
-   ```
-
-### 3. Server-Struktur anlegen
-
-1. Installiere Express und CORS im Server-Verzeichnis:
-   ```bash
-   cd server
    npm install express cors
-   cd ..
-   ```
-2. Erstelle die Ordnerstruktur für den Server:
-   ```bash
-   mkdir -p server/src/{config,controllers,middleware,models,routes,services,types,utils}
-   mkdir -p server/tests/{unit,integration,e2e}
-   ```
-3. Erstelle die Hauptdateien für den Server:
-   ```bash
-   touch server/server.js
-   touch server/src/app.js
    ```
 
-### 4. Code-Qualität und Pre-Commit Hooks
+2. Erstelle die Verzeichnisstruktur für den Server:
+   ```bash
+   mkdir -p src/{config,controllers,middleware,models,routes,services,types,utils}
+   mkdir -p tests/{unit,integration,e2e}
+   ```
+
+3. Lege die Einstiegsdateien für den Server an:
+   ```bash
+   touch server.js
+   touch src/app.js
+   ```
+
+### 4. Linting & Formatting Setup
 
 1. Installiere lint-staged im Root:
    ```bash
    npm install lint-staged
    ```
-2. Füge im `package.json` (im Root) folgende Konfiguration für `lint-staged` ein:
+
+2. Ergänze in der `package.json` im Root-Verzeichnis:
    ```json
    "lint-staged": {
      "client/**/*.{ts,vue}": [
@@ -89,21 +95,17 @@ Diese Anleitung beschreibt die initiale Einrichtung eines Fullstack-Projekts bes
      ]
    }
    ```
-3. Initialisiere Husky und installiere die Abhängigkeiten:
+
+3. Initialisiere Husky und installiere Abhängigkeiten:
    ```bash
    npx husky-init && npm install
    ```
-4. Öffne die erstellte `.husky/pre-commit` Datei und ergänze den folgenden Befehl:
+
+4. Füge in der Datei `.husky/pre-commit` folgenden Befehl hinzu:
    ```bash
    npm lint-staged
    ```
 
-### 5. Nächste Schritte
+## Fertig!
 
-- Konfiguriere bei Bedarf weitere ESlint- und Prettier-Regeln.
-- Implementiere erste Routen im Server und teste sie mit dem Client.
-- Ergänze Tests in den entsprechenden Verzeichnissen.
-
----
-
-Diese Schritte bilden die Grundlage für ein sauberes Fullstack-Setup mit Vue und Express. Mit dieser Struktur lassen sich Client- und Server-Code logisch trennen, Workflows via Husky und lint-staged sicherstellen, dass Code-Qualität eingehalten wird, und mittels `eslint` und `prettier` ein einheitlicher Code-Style gewährleistet werden.
+Dein Fullstack-Projekt ist nun grundlegend eingerichtet. Du hast eine klare Verzeichnisstruktur, ein Frontend mit Vue & Vuetify, ein Backend mit Express, sowie Linting- und Formatierungstools vorbereitet. Von hier aus kannst du deine Applikation weiter entwickeln.
