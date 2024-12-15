@@ -34,6 +34,14 @@ Diese Anleitung beschreibt die initiale Einrichtung eines Fullstack-Projekts bes
    ```bash
    touch .env
    ```
+6. Lege eine `.gitignore`-Datei im Root-Verzeichnis an:
+   ```bash
+   touch .gitignore
+   ```
+7. Füge den .env Pfad in die `.gitignore`-Datei ein:
+   ```bash
+   .env
+   ```
 
 ### 2. Client-Struktur anlegen
 
