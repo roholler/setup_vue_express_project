@@ -26,6 +26,19 @@ Diese Anleitung führt dich Schritt für Schritt durch das Setup eines Fullstack
    npm init @eslint/config@latest
    ```
 
+4. Richte Prettier ein:  
+   ```bash
+   npm install -D prettier eslint-config-prettier eslint-plugin-prettier
+   ```
+   In eslint.config.js einfügen:
+   ```
+   import eslintConfigPrettier from "eslint-config-prettier";
+   export default [
+   ...
+   eslintConfigPrettier,
+   ...
+   ```
+
 4. Installiere und initialisiere Vuetify (im client-Verzeichnis, wenn abgefragt Projektname `client` angeben):  
    ```bash
    npm init vuetify@latest
