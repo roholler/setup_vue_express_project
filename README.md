@@ -39,12 +39,12 @@ Diese Anleitung führt dich Schritt für Schritt durch das Setup eines Fullstack
    ...
    ```
 
-4. Installiere und initialisiere Vuetify (im client-Verzeichnis, wenn abgefragt Projektname `client` angeben):  
+5. Installiere und initialisiere Vuetify (im client-Verzeichnis, wenn abgefragt Projektname `client` angeben):  
    ```bash
    npm init vuetify@latest
    ```
 
-5. Installiere Vitest (zum Testen):  
+6. Installiere Vitest (zum Testen):  
    ```bash
    npm install -D vitest
    ```
@@ -55,7 +55,7 @@ Diese Anleitung führt dich Schritt für Schritt durch das Setup eines Fullstack
    }
    ```
 
-6. Lege eine `.env`-Datei an:  
+7. Lege eine `.env`-Datei an:  
    ```bash
    touch .env
    ```
